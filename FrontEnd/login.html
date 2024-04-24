@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Sophie Bluel - Architecte d'intérieur</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
+	<meta name="description" content="">
+	<link rel="stylesheet" href="./assets/style.css">
+</head>
+<header>
+	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+	<nav>
+		<ul>
+			<li>projets</li>
+			<li>contact</li>
+			<li>login</li>
+			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+		</ul>
+	</nav>
+</header>
+<section id="contact">
+    <!-- Penser a changer l'ID ici de la section -->
+    <h2>Log In</h2>
+	<form action="http://localhost:5678/api/users/login" method="post" class="loginForm">
+		<label for="emailUser">E-mail</label>
+		<input type="email" name="email" id="emailUser">
+		<label for="passwordUser">Mot de passe</label>
+		<input type="password" name="password" id="passwordUser"></input>
+		<input type="submit" value="Se connecter"></input>
+		<span>Mot de passe oublié</span>
+	</form>
+	
+</section>
+
+<!-- PENSER A AJOUTER :
+- gras au survol header
+- réduire taille champs de txt
+- couleur de fond 
+- bouton connexion trop fat
+- mot de passe oublié
+- required à password/email?-->

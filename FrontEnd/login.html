@@ -22,18 +22,27 @@
 		</ul>
 	</nav>
 </header>
-<section id="contact">
-    <!-- Penser a changer l'ID ici de la section -->
-    <h2>Log In</h2>
-	<form action="http://localhost:5678/api/users/login" method="post">
-		<label for="emailUser">E-mail</label>
-		<input type="email" name="email" id="emailUser">
-		<label for="passwordUser">Mot de passe</label>
-		<input type="password" name="password" id="passwordUser"></input>
-		<input type="submit" value="Se connecter"></input>
-		<span>Mot de passe oublié</span>
-	</form>
-</section>
+<main>
+	<section id="contact">
+		<!-- Penser a changer l'ID ici de la section -->
+		<h2>Log In</h2>
+		<form action="http://localhost:5678/api/users/login" method="post">
+			<label for="email">E-mail</label>
+			<input type="email" name="email" id="email">
+			<label for="password">Mot de passe</label>
+			<input type="password" name="password" id="password"></input>
+			<input type="submit" id="loginBtn" value="Se connecter"></input>
+			<a href="#">Mot de passe oublié</a>
+		</form>
+	</section>
+</main>
+<footer>
+	<nav>
+		<ul>
+			<li>Mentions Légales</li>
+		</ul>
+	</nav>
+</footer>
 </body>
 <script src ="login.js"></script>
 </html>

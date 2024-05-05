@@ -1,4 +1,4 @@
- //   // Définition des constantes
+//   // Définition des constantes
 const form = document.querySelector("form")
 let token = localStorage.getItem("token")
 
@@ -6,10 +6,9 @@ let token = localStorage.getItem("token")
 form.addEventListener("submit", (event) => {
     event.preventDefault()
     // Récupération des valeurs saisies dans username et password
-        let form = { 
-            email:  document.getElementById("email"),
-            password: document.getElementById("password"),
-            }
+            email= email.value
+            password= password.value
+            
 
 fetch ('http://localhost:5678/api/users/login', {
     method: "POST",
@@ -18,6 +17,22 @@ fetch ('http://localhost:5678/api/users/login', {
         // "Authorization": "Bearer "},
     body: JSON.stringify({email: form.email.value, password: form.password.value}),
 })
+
+// .then((response) => response.json())
+// .then((data) => {
+//     localStorage.setItem('auth', JSON.stringify(data));
+//     const auth = JSON.parse(localStorage.getItem('auth'));
+//     if (auth && auth.token) {
+//       window.location = "index.html";
+//     } else {
+//       messageError.style.display = "flex";
+//     }
+// })
+//  .catch((error) => {
+//   console.error('Error:', error);
+//   alert("Erreur dans l’identifiant ou le mot de passe")
+// });
+// })
  // Si un des deux champs est vide , on arrête tout et on alerte 
  // Si un des deux champs = une erreur, alors ... -->
 .then((response) => {
@@ -27,14 +42,9 @@ fetch ('http://localhost:5678/api/users/login', {
     } else {
         response.json()
         .then ((data) => {
-            sessionStorage.setItem("token", data.token)
+            localStorage.setItem("token", data.token)
             window.location.replace("index.html")
             })
         }
     })
 })
-
-//Info Token
-localStorage.setItem("userId", 1)
-localStorage.setItem("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTcxNDE0ODA4OSwiZXhwIjoxNzE0MjM0NDg5fQ.5wY-jxs-iehNYrqT60Tj4H93BD9RQxlKWq7FCkvuk1U")
-

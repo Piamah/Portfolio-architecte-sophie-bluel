@@ -1,4 +1,3 @@
-
 //Affichage et récupération photos Menu Home
 
 const getWorks = ()=> {
@@ -102,3 +101,38 @@ getCategories()
         })
       })
     })
+
+
+// Contact section
+
+
+// PARTIE ADMIN
+
+//Déclaration des variables
+let token = localStorage.getItem("token")
+// console.log(token)
+const log = document.getElementById("btnLogin")
+const editionMode = document.querySelector(".edition")
+const modifProjet = document.querySelector(".modifProjet")
+const modalsPhotos = document.querySelector(".modals")
+
+if (token) {
+    filters.style.display="none"
+    log.innerText="logout"
+} else {
+    editionMode.style.display="none"
+    modifProjet.style.display="none"
+    modalsPhotos.style.display="none"
+}
+
+//Déconnexion
+const logout = () => {
+    localStorage.removeItem("token")
+    window.location.replace("login.html")
+}
+
+log.addEventListener("click", () => {
+    logout()
+})
+
+//Mode edition affichage

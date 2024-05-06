@@ -53,6 +53,10 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	/* ADDED */
+	position: relative;
+	padding-bottom: 60px;
+	min-height: 88vh
 }
 header {
 	display: flex;
@@ -189,23 +193,22 @@ footer nav ul {
 }
 
 
-/* MES ADD */
+/***** MES ADD *****/
 
+/* A VOIR BODY */
 body {
 	background-color: #FFFEF8;
 }
 
 /* PENSER A CHANGER LA COULEUR DU BG */
+
+/* A VOIR FOOTER */
 footer {
-	background-color: #B1663C;
-	display: flex;
-	justify-content: flex-end;
-	margin-bottom: 0;
+    position: absolute;
+    width: 125%;
+    bottom: 0;
 }
 
-main {
-	height: 1024px;
-}
 
 /* CSS DE ADMIN */
 .edition {
@@ -228,54 +231,61 @@ main {
 /* PARTIE FILTRES */
 .filtres {
 	display: flex;
-	max-width: 45%;
+	width: 100%;
+	justify-content: center;
+	gap: 10px;
+	padding: 45px;
 	
 }
 
 .filtres button {
+	padding: 10px 20px;
+	border-radius: 60px;
+	border: #1D6154 1px solid;
+	background: none;
+	color: #1D6154;
 	font-family: 'Syne';
 	font-weight: 700;
-	color: #1D6154;
-	background-color: white;
-	margin : 2em auto ;
-	width: 100%;
-	height: 37px;
+	font-size: 16px;
 	text-align: center;
-	border:1px solid;
-	border-color: #1D6154;
-	border-radius: 60px ;
-	margin-right: 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	white-space: nowrap; 
-	/* A voir */
+	margin: 0;
+	width: auto;
+	box-sizing: border-box;
 	
 }
 
 .filtres button:hover {
+	padding: 10px 20px;
+	border-radius: 60px;
+	border: #1D6154 1px solid;
+	background-color: #1D6154;
+	color: white;
 	font-family: 'Syne';
 	font-weight: 700;
-	color: white;
-	background-color: #1D6154;
-	margin : 2em auto ;
-	width: 100%;
-	height: 37px;
+	font-size: 16px;
 	text-align: center;
-	border:1px solid;
-	border-radius: 60px;
-	margin-right: 10px;
+	margin: 0;
+	width: auto;
+	box-sizing: border-box;
 
 	
 }
+
+/* HEADER */
 
 header a {
 	color:black;
 	text-decoration: none;
 }
 
-header a:hover {
-	color: #B1663C;
+header li:hover {
+	font-weight: bold;
+	color: black;
+}
+
+nav img {
+	width: 19.35px;
+	height: 19.35px;
 }
 
 /* PARTIE LOGIN */
@@ -306,4 +316,25 @@ header a:hover {
 }
 #login label {
 	margin: 2em 0 1em 0;
+}
+
+#login a {
+	display: flex;
+	justify-content: center;
+	color: #3D3D3D;
+}
+
+/* PARTIE PROJETS */
+
+.modifProjet {
+position: absolute;
+left : 60%;
+top : 16.45%;
+}
+
+.modifProjet button {
+	border: none;
+	background-color: transparent;
+	font-family: 'Work Sans';
+    font-size: 14px;
 }

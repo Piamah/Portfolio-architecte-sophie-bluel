@@ -136,3 +136,7 @@ log.addEventListener("click", () => {
 })
 
 //Mode edition affichage
+//Déclaration des variables
+// const btnModifProjet = document.querySelector("btnModifProjet")
+// console.log(btnModifProjet)
+// Ajouter addeventlistener sur modif projet, redirection vers new page (how tdo page)

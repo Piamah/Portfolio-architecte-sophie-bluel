@@ -50,7 +50,7 @@
         <h2>Mes projets</h2>
         <div class = modifProjet>
             <i class="fa-regular fa-pen-to-square"></i>
-            <button class="btnModifProjet">modifier</button>
+            <a href ="#modal1" class="js-modal">modifier</a>
         </div>
         <div class ="filtres" id="filtres">
         </div>
@@ -80,16 +80,39 @@
         </ul>
     </nav>
 </footer>
-<!--PARTIE MODALE ?-->
-<a href ="#modal1" class="js-modal">Ouvrir la boite modale</a>
-<aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
-    <div class="modal-wrapper js-modal-stop">
-        <button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
-        <h3 id="titlemodal">Galerie photo</h1>
-        <input type="submit" class="add-photo" value="Ajouter une photo">
-    </div>
+<!--PARTIE MODALE-->
+<section class="modals">
+    <!-- MODALE 1 -->
+    <aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
+        <div class="modal-wrapper js-modal-stop">
+            <!-- modal-wrapper = littéralement fenêtre de modale -->
+            <button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <h3 id="titlemodal">Galerie photo</h3>
+            <div class = "modalContent">
+            </div>
+            <!-- <input type="submit" class="add-photo" value="Ajouter une photo"> -->
+            <button class="add-photo" data-target ="#modal2">Ajouter une photo</button>
+        </div>
+    </aside>
+    <!-- MODALE 2 -->
+    <aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
+        <div class ="modal-wrapper js-modal-stop" id="add-photo-modal">
+            <button class="js-modal-close"><i class="fa-solid fa-arrow-left"></i><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="titlemodal">Ajout photo</h3>
+            <div class="modalContent">
+                <form id="add-photo-form" name="add-photo-form">
+                    <div class="addPicZone">
+                        <i class="fa-regular fa-image grey"></i>
+                        <button class="add-photo2">+ Ajouter photo</button>
+                        <p>jpg, png : 4mo max</p>
+                    </div>
+                </form>
+            </div>
+            <input type="submit" id="valider" value="Valider">
+        </div>
 
-</aside>
+    </aside>
+</section>
 <script src ="index.js"></script>
 </body>
 </html>

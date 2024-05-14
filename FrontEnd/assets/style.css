@@ -326,16 +326,17 @@ nav img {
 /* PARTIE PROJETS */
 
 .modifProjet {
-position: absolute;
-left : 60%;
-top : 16.45%;
-}
-
-.modifProjet button {
+	position: absolute;
+	left : 60%;
+	top : 16.7%;
 	border: none;
 	background-color: transparent;
 	font-family: 'Work Sans';
     font-size: 14px;
+}
+
+.modifProjet a {
+	text-decoration: none;
 }
 
 /* PARTIE MODALES */
@@ -350,7 +351,7 @@ top : 16.45%;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.3);
 }
 
 .modal-wrapper {
@@ -379,9 +380,45 @@ h3 {
 	font-size: 14px;
 	margin: 0;
 	width: 237px !important;
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px;
 }
 
+
 .js-modal-close {
+	display: flex;
+	justify-content: space-between;
 	border: none;
 	background-color: transparent;
 }
+
+.modal-wrapper {
+	border-radius: 2%;
+}
+
+/* STYLE INTERNE MODALE2 */
+
+.grey {
+	color: #B9C5CC;
+}
+
+#add-photo-modal {
+	display: flex;
+	flex-direction: column;
+}
+
+.addPicZone {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 100%;
+	width: 100%;
+}
+
+

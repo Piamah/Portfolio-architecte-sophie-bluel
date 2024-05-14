@@ -135,14 +135,8 @@ log.addEventListener("click", () => {
     logout()
 })
 
-//Mode edition affichage
-//Déclaration des variables
-// const btnModifProjet = document.querySelector("btnModifProjet")
-// console.log(btnModifProjet)
-// Ajouter addeventlistener sur modif projet, redirection vers new page (how tdo page)
 
-
-//Création boîte modale
+//Création boîte modale 1 (SUPPRIMER PROJETS)
 let modal = null 
 
 const openModal = function (e) {
@@ -159,7 +153,7 @@ const openModal = function (e) {
 
 //Nettoyage boîte modale
 const closeModal = function (e) {
-    if (modal === null) returb
+    if (modal === null) return
     e.preventDefault()
     modal.style.display = "none"
     modal.setAttribute("aria-hidden", "true")
@@ -186,3 +180,33 @@ window.addEventListener("keydown", function (e) {
         closeModal(e)
     }
 })
+
+//Ajout des travaux sur la modale
+
+//Création de modale 2 (AJOUT PHOTO)
+
+const openModal2 = function (e) {
+    e.preventDefault()
+    const target2 = document.getElementById("modal2")
+    target2.style.display = null
+    target2.removeAttribute("aria-hidden")
+    target2.setAttribute("aria-modal", "true")
+    modal = target2
+    modal.addEventListener("click", closeModal)
+    modal.querySelector(".js-modal-close").addEventListener("click", closeModal)
+    modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation)
+}
+
+
+const stopPropagation2 = function (e) {
+    e.stopPropagation2()
+}
+
+document.querySelectorAll(".js-modal").forEach(a => {
+    a.addEventListener("click", openModal)
+
+})
+
+const ajoutImage = document.querySelector(".add-photo")
+    ajoutImage.addEventListener("click", openModal2)
+

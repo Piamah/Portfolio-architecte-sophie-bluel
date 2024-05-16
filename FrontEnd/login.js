@@ -35,21 +35,3 @@ form.addEventListener("submit", (event) => {
     }
 
 })
-
-// .then((response) => response.json())
-// .then((data) => {
-//     localStorage.setItem('auth', JSON.stringify(data));
-//     const auth = JSON.parse(localStorage.getItem('auth'));
-//     if (auth && auth.token) {
-//       window.location = "index.html";
-//     } else {
-//       messageError.style.display = "flex";
-//     }
-// })
-//  .catch((error) => {
-//   console.error('Error:', error);
-//   alert("Erreur dans l’identifiant ou le mot de passe")
-// });
-// })
- // Si un des deux champs est vide , on arrête tout et on alerte 
- // Si un des deux champs = une erreur, alors ... -->

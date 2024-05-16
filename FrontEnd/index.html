@@ -102,13 +102,24 @@
             <div class="modalContent">
                 <form id="add-photo-form" name="add-photo-form">
                     <div class="addPicZone">
-                        <i class="fa-regular fa-image grey"></i>
-                        <button class="add-photo2">+ Ajouter photo</button>
+                        <i class="fa-regular fa-image grey" id="imageMod2"></i>
+                        <label for = "add-photo2" id="labelImageM2">+ Ajouter photo</label>
+                        <input class="add-photo2" id="add-photo2" type="file" style="display: none"></input>
                         <p>jpg, png : 4mo max</p>
+                    </div>
+                    <div class="infoTitlePicModale">
+                        <label for="title" class="labelTitleModal">Titre</label><br>
+                        <input type="text" name="title" id="titleModalPic">
+                    </div>
+                    <div class="infoCategoryPicModale" id="barreGrise">
+                        <label for="category" class="labelTitleModal">Catégorie</label><br>
+                        <select name="category" id="categoryModalPic">
+                            <option value="" selected></option>
+                        </select>
                     </div>
                 </form>
             </div>
-            <input type="submit" id="valider" value="Valider">
+            <input type="submit" id="validerModal" value="Valider">
         </div>
 
     </aside>

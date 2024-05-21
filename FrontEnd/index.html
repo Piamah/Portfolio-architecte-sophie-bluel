@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>	
-<!--Exception pour edition?-->
 <div class ="edition">
     <i class="fa-regular fa-pen-to-square"></i>
     <p>Mode édition</p>
@@ -86,18 +85,17 @@
     <aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
         <div class="modal-wrapper js-modal-stop">
             <!-- modal-wrapper = littéralement fenêtre de modale -->
-            <button class="js-modal-close"><i class="fa-solid fa-xmark"></i></button>
+            <button class="js-modal-close" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
             <h3 id="titlemodal">Galerie photo</h3>
             <div class = "modalContent">
             </div>
-            <!-- <input type="submit" class="add-photo" value="Ajouter une photo"> -->
-            <button class="add-photo" data-target ="#modal2">Ajouter une photo</button>
+            <button class="add-photo" id = "add-photo-btn" data-target ="#modal2">Ajouter une photo</button>
         </div>
     </aside>
     <!-- MODALE 2 -->
     <aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
         <div class ="modal-wrapper js-modal-stop" id="add-photo-modal">
-            <button class="js-modal-close"><i class="fa-solid fa-arrow-left"></i><i class="fa-solid fa-xmark"></i></button>
+            <button class="js-modal-close" id="back-first-modal"><i class="fa-solid fa-arrow-left"></i><i class="fa-solid fa-xmark"></i></button>
             <h3 class="titlemodal">Ajout photo</h3>
             <div class="modalContent">
                 <form id="add-photo-form" name="add-photo-form">

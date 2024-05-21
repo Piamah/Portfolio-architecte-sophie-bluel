@@ -181,8 +181,6 @@ window.addEventListener("keydown", function (e) {
     }
 })
 
-//Ajout des travaux sur la modale
-
 //Création de modale 2 (AJOUT PHOTO)
 
 const openModal2 = function (e) {
@@ -210,3 +208,70 @@ document.querySelectorAll(".js-modal").forEach(a => {
 const ajoutImage = document.querySelector(".add-photo")
     ajoutImage.addEventListener("click", openModal2)
 
+
+
+    // TEST //
+const allModals = document.querySelector(".modals")
+function hideModal() {
+    allModals.overflow = "none"
+    }
+
+//Constantes de la structure interne modales //
+const modal1Content = document.querySelector("#modal1")
+const modalPhoto = document.querySelector("#add-photo-modal")
+const addPhotoBtn = document.querySelector("#add-photo-btn")
+const backBtn = document.querySelector("#back-first-modal")
+const closeBtn = document.querySelector("#close-btn")
+
+// Gestion de l'affichage de la modale 
+addPhotoBtn.addEventListener("click", function() {
+  modal1Content.style.display = "none"
+  modalPhoto.style.display = "block"
+})
+
+backBtn.addEventListener("click", function(){
+  modal1Content.style.display = "flex"
+  modalPhoto.style.display = "none"
+})
+
+closeBtn.addEventListener("click", hideModal)
+
+//Ne comprends pas pq flèche ferme pas modale 1 
+
+// HERE DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+const imagesModal = document.querySelector(".modalContent")
+
+function worksModal(work) {
+  const figure = document.createElement("figure")
+  const figureImage = document.createElement("img")
+  const deleteIcon = document.createElement("i") 
+        
+  figureImage.src = work.imageUrl
+  figureImage.alt = work.title
+  figure.setAttribute("data-id", work.id)
+  deleteIcon.className = "fa-regular fa-trash-can" 
+
+  figure.appendChild(figureImage)
+  figure.appendChild(deleteIcon)
+
+  // Add a delete event when clicking on the "delete" icon
+  deleteIcon.addEventListener("click", (event) => {
+    event.preventDefault()
+    deleteWorkId(work.id)
+  })
+
+  return figure
+}
+
+fetch("http://localhost:5678/api/works")
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((work) => {
+      const figure = worksModal(work)
+      imagesModal.appendChild(figure)
+    })
+  })
+
+//   FAIRE FONCTION DELETEWORKID
+
+// function deleteWorkId(worksId)

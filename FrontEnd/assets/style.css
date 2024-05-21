@@ -481,3 +481,8 @@ h3 {
     margin-top: 30px;
 	cursor: pointer;
 }
+
+.modalContent img{
+	display: flex;
+	width: 15%;
+}

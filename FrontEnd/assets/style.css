@@ -385,7 +385,7 @@ h3 {
 /* MODALE1 */
 
 .add-photo {
-	padding: 10px 20px;
+	padding: 10px 48px;
 	border: #1D6154 1px solid;
 	font-size: 14px;
 	margin: 0;
@@ -401,6 +401,34 @@ h3 {
 }
 
 
+.modalContent {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+    grid-row-gap: 20px;
+    grid-column-gap: 10px;
+    margin: 40px 80px 0px 80px;
+    padding-bottom: 50px;
+    border-bottom: solid 2px #d0d0d0;
+}
+
+.modalContent img{
+	width: 100%;
+}
+
+.modalContent figure i {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	background-color: black;
+	width: 28%;
+	height: 18%;
+	border-radius: 20%;
+}
+
+#add-photo-btn {
+	display: flex;
+}
 /* MODALE2 */
 
 .grey {
@@ -422,7 +450,7 @@ h3 {
 	height: 169px;
 	margin: 0px 80px 0px 80px;
 	background-color: #E8F1F6;
-	border-radius: 3%;
+	border-radius: 2%;
 }
 
 
@@ -468,7 +496,9 @@ h3 {
 	box-shadow: 0px 4px 14px 0px #00000017;
 }
 
-#validerModal {
+#valider {
+	display: flex;
+	justify-content: center;
 	font-family: 'Syne';
     font-weight: 700;
     color: white;
@@ -480,9 +510,4 @@ h3 {
     border-radius: 60px;
     margin-top: 30px;
 	cursor: pointer;
-}
-
-.modalContent img{
-	display: flex;
-	width: 15%;
 }

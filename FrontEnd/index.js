@@ -244,18 +244,18 @@ const imagesModal = document.querySelector(".modalContent")
 function worksModal(work) {
   const figure = document.createElement("figure")
   const figureImage = document.createElement("img")
-  const deleteIcon = document.createElement("i") 
+  const trashIcon = document.createElement("i") 
         
   figureImage.src = work.imageUrl
   figureImage.alt = work.title
   figure.setAttribute("data-id", work.id)
-  deleteIcon.className = "fa-regular fa-trash-can" 
+  trashIcon.className = "fa-regular fa-trash-can" 
 
   figure.appendChild(figureImage)
-  figure.appendChild(deleteIcon)
+  figure.appendChild(trashIcon)
 
   // Add a delete event when clicking on the "delete" icon
-  deleteIcon.addEventListener("click", (event) => {
+  trashIcon.addEventListener("click", (event) => {
     event.preventDefault()
     deleteWorkId(work.id)
   })
@@ -274,4 +274,14 @@ fetch("http://localhost:5678/api/works")
 
 //   FAIRE FONCTION DELETEWORKID
 
-// function deleteWorkId(worksId)
+function deleteWorkId(worksId) {
+    const confirmation = confirm("Voulez vous vraiment supprimer ce projet?")
+    if (confirmation) {
+      fetch(`http://localhost:5678/api/works/${worksId}`, {
+        method: "DELETE",
+        headers: {
+          "Accept" : "application/json"
+        }
+      })
+    }   
+}

@@ -254,12 +254,11 @@ function worksModal(work) {
   figure.appendChild(figureImage)
   figure.appendChild(trashIcon)
 
-  // Add a delete event when clicking on the "delete" icon
-  trashIcon.addEventListener("click", (event) => {
-    event.preventDefault()
-    deleteWorkId(work.id)
+  // Gestion bouton suppression projet
+  trashIcon.addEventListener("click", (e) => {
+    e.preventDefault()
+    deleteWorkId(work.id, figure)
   })
-
   return figure
 }
 
@@ -271,17 +270,92 @@ fetch("http://localhost:5678/api/works")
       imagesModal.appendChild(figure)
     })
   })
+  .catch((error) => {
+    console.error("Erreur lors de la récupération des travaux:", error)
+  })
 
 //   FAIRE FONCTION DELETEWORKID
-
-function deleteWorkId(worksId) {
+function deleteWorkId(worksId, figureElement) {
     const confirmation = confirm("Voulez vous vraiment supprimer ce projet?")
     if (confirmation) {
       fetch(`http://localhost:5678/api/works/${worksId}`, {
         method: "DELETE",
         headers: {
-          "Accept" : "application/json"
+            authorization: `Bearer ${token}`,
+            "Accept" : "application/json"
         }
       })
+      .then ((response) => {
+        if (response.ok) {
+            alert("Vous avez bien supprimé le projet sélectionné")
+            figureElement.remove()
+        } else {
+            alert("Erreur lors de la suppression du projet sélectionné")
+        }
+      })
+      .catch((error) => {
+        console.error(error)
+        alert("Une erreur s'est produite lors de la suppression du projet sélectionné")
+      })
     }   
+}
+
+// Champs de la modale 2
+
+// Titre/catégorie/image/btn
+
+const titleInputM2 = document.getElementById ("titleModalPic") 
+const categorySelectM2 = document.getElementById ("categoryModalPic") 
+const imageSelectM2 = document.getElementById ("add-photo2")
+const submitBtnM2 = document.getElementById ("valider")
+
+function filledForm () {
+    if (titleInputM2.value !== "" && categorySelectM2.value !== "" && imageSelectM2.value !== "") {
+        submitBtnM2.style.backgroundColor ="1D6154"
+    }else{
+        submitBtnM2.style.backgroundcolor = ""
+    }
+}
+
+// VERIFIER LES CATEGORIES, PB L326
+const selectCategory = function () {
+document.getElementById("#categoryModalPic").innerHTML =""
+option = document.querySelector("option")
+document.getElementById("categoryModalPic").appendChild(option)
+
+categories.forEach((category) => {
+    option = document.createElement("option")
+    option.value = category.name
+    option.innerText = category.name
+    option.id = category.id
+    document.querySelector("#categoryModalPic").appendChild(option)
+})
+}
+
+
+//Ajout de la nouvelle photo
+
+submitBtnM2.addEventListener("click", addPicture)
+
+function addPicture (e) {
+    e.preventDefault()
+
+    const token = sessionStorage.getItem("token")
+
+    const title = document.getElementById("titleModalPic").value
+    const category = document.getElementById("categoryModalPic").value
+    const file = document.getElementById("add-photo2").files[0]
+
+    // Est-ce qu'il faut préciser qu'on ne peut ajouter qu'un seul fichier
+    //  à la fois? image.length>1 X / === 1 OK?
+    if(!title || !category || !file) {
+        alert("Merci de remplir tous les champs du formulaire")
+        return
+    }
+
+    if (file.size > 4 * 1024 * 1024) {
+        alert("La taille de l'image ne doit pas dépasser 4Mo.")
+        return
+      }
+
 }

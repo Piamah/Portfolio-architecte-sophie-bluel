@@ -200,7 +200,6 @@ body {
 	background-color: #FFFEF8;
 }
 
-/* PENSER A CHANGER LA COULEUR DU BG */
 
 /* A VOIR FOOTER */
 footer {
@@ -222,11 +221,6 @@ footer {
 	height: 59px;
 }
 
-/* #portfolio h2, .modifProjet {
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-} */
 
 /* PARTIE FILTRES */
 .filtres {

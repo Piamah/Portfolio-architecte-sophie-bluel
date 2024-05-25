@@ -170,7 +170,6 @@ const stopPropagation = function (e) {
 
 document.querySelectorAll(".js-modal").forEach(a => {
     a.addEventListener("click", openModal)
-
 })
 
 //Ecoute du bouton echap to close
@@ -238,7 +237,7 @@ closeBtn.addEventListener("click", hideModal)
 
 //Ne comprends pas pq flèche ferme pas modale 1 
 
-// HERE DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
+// HERE 
 const imagesModal = document.querySelector(".modalContent")
 
 function worksModal(work) {
@@ -257,13 +256,15 @@ function worksModal(work) {
   // Gestion bouton suppression projet
   trashIcon.addEventListener("click", (e) => {
     e.preventDefault()
-    deleteWorkId(work.id, figure)
+    const workId = figure.getAttribute("data-id")
+    deleteWorkId(workId, figure)
   })
   return figure
 }
 
+//Récupère les travaux
 fetch("http://localhost:5678/api/works")
-  .then((response) => response.json())
+  .then((res) => res.json())
   .then((data) => {
     data.forEach((work) => {
       const figure = worksModal(work)
@@ -274,19 +275,22 @@ fetch("http://localhost:5678/api/works")
     console.error("Erreur lors de la récupération des travaux:", error)
   })
 
-//   FAIRE FONCTION DELETEWORKID
-function deleteWorkId(worksId, figureElement) {
+//   Suppression du travail en fonction de son ID
+function deleteWorkId(workId, figureElement) {
     const confirmation = confirm("Voulez vous vraiment supprimer ce projet?")
     if (confirmation) {
-      fetch(`http://localhost:5678/api/works/${worksId}`, {
+        const token = localStorage.getItem("token")
+        //Check token
+        console.log(token)
+      fetch(`http://localhost:5678/api/works/${workId}`, {
         method: "DELETE",
         headers: {
-            authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
             "Accept" : "application/json"
         }
       })
-      .then ((response) => {
-        if (response.ok) {
+      .then ((res) => {
+        if (res.ok) {
             alert("Vous avez bien supprimé le projet sélectionné")
             figureElement.remove()
         } else {
@@ -317,21 +321,30 @@ function filledForm () {
     }
 }
 
-// VERIFIER LES CATEGORIES, PB L326
-const selectCategory = function () {
-document.getElementById("#categoryModalPic").innerHTML =""
-option = document.querySelector("option")
-document.getElementById("categoryModalPic").appendChild(option)
-
-categories.forEach((category) => {
-    option = document.createElement("option")
-    option.value = category.name
-    option.innerText = category.name
-    option.id = category.id
-    document.querySelector("#categoryModalPic").appendChild(option)
-})
+// VERIFIER LES CATEGORIES, PB L322 ?       
+const selectCategory = function (categories) {
+    const categorySelect = document.getElementById("categoryModalPic")
+    categorySelect.innerHTML = ""
+    // Ajout d'un champ vide
+    const emptyField = document.createElement("option")
+    emptyField.value = ""
+    emptyField.innerText = ""
+    emptyField.disabled = true
+    emptyField.selected = true
+    categorySelect.appendChild(emptyField)
+    //Affichage des catégories
+    categories.forEach((category) => {
+        const option = document.createElement("option")
+        option.value = category.id
+        option.innerText = category.name
+        categorySelect.appendChild(option)
+    });
 }
 
+getCategories()
+    .then (categories => {
+        selectCategory(categories)
+    })
 
 //Ajout de la nouvelle photo
 

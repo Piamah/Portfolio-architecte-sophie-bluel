@@ -85,7 +85,9 @@
     <aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
         <div class="modal-wrapper js-modal-stop">
             <!-- modal-wrapper = littéralement fenêtre de modale -->
-            <button class="js-modal-close" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <button class="close-btn" id="close-btn1"><i class="fa-solid fa-xmark"></i></button>
+            </div>
             <h3 id="titlemodal">Galerie photo</h3>
             <div class = "modalContent">
             </div>
@@ -95,7 +97,10 @@
     <!-- MODALE 2 -->
     <aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
         <div class ="modal-wrapper js-modal-stop" id="add-photo-modal">
-            <button class="js-modal-close" id="back-first-modal"><i class="fa-solid fa-arrow-left"></i><i class="fa-solid fa-xmark"></i></button>
+            <div class="btnModal2">
+                <button class="js-modal-close" id="back-first-modal"><i class="fa-solid fa-arrow-left"></i></button>
+                <button class = "close-btn" id="close-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
             <h3 class="titlemodal">Ajout photo</h3>
             <div class="modalContent2">
                 <form id="add-photo-form" name="add-photo-form">
@@ -104,6 +109,9 @@
                         <label for = "add-photo2" id="labelImageM2">+ Ajouter photo</label>
                         <input class="add-photo2" id="add-photo2" type="file" style="display: none"></input>
                         <p>jpg, png : 4mo max</p>
+                        <div class = "preview-picture">
+                            <img id ="preview" src="" alt="Prévisualisation de l'image" style ="display :none">
+                        </div>
                     </div>
                     <div class="infoTitlePicModale">
                         <label for="title" class="labelTitleModal">Titre</label><br>
@@ -123,5 +131,6 @@
     </aside>
 </section>
 <script src ="index.js"></script>
+<script src = "modals.js"></script>
 </body>
 </html>

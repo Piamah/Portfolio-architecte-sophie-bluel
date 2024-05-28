@@ -349,6 +349,8 @@ nav img {
 }
 
 .modal-wrapper {
+	display: flex;
+	flex-direction: column;
 	overflow: auto;
 	width: 630px;
 	height: 670px;
@@ -357,6 +359,11 @@ nav img {
 	padding: 20px;
 	background-color: white;
 	border-radius: 2%;
+}
+
+.modal-header {
+	display: flex;
+	justify-content: flex-end;
 }
 
 h3 {
@@ -373,8 +380,27 @@ h3 {
 	justify-content: space-between;
 	border: none;
 	background-color: transparent;
+	cursor: pointer;
+	font-size: 20px;
 }
 
+.close-btn {
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	font-size: 20px;
+}
+
+#close-btn1{
+	display: flex;
+	justify-content: flex-end;
+	font-size: 20px;
+}
+
+.btnModal2 {
+	display: flex;
+	justify-content: space-between;
+}
 
 /* MODALE1 */
 
@@ -410,14 +436,21 @@ h3 {
 }
 
 .modalContent figure i {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	display: block;
+	position: absolute;
+	box-sizing: border-box;
 	color: white;
 	background-color: black;
-	width: 28%;
+	width: 27%;
 	height: 18%;
+	padding: 4px 5px;
 	border-radius: 20%;
+	top: 0.4em;
+	right : 0.4em;
+}
+
+.modalContent figure {
+	position: relative
 }
 
 #add-photo-btn {
@@ -504,4 +537,10 @@ h3 {
     border-radius: 60px;
     margin-top: 30px;
 	cursor: pointer;
+}
+/* 
+Prévisualisation de l'image */ 
+.preview-picture img {
+	width: 67%;
+	padding: 65px 73px 62px 73px;
 }

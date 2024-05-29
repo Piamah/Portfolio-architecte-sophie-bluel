@@ -320,17 +320,26 @@ nav img {
 /* PARTIE PROJETS */
 
 .modifProjet {
-	position: absolute;
-	left : 60%;
-	top : 16.7%;
+	display: flex;
+	align-items: baseline;
+	justify-content: center;
 	border: none;
 	background-color: transparent;
 	font-family: 'Work Sans';
     font-size: 14px;
+	gap: 25px;
 }
 
-.modifProjet a {
+.js-modal {
 	text-decoration: none;
+	padding: 10px;
+	font-family: Work Sans;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 16.42px;
+	text-align: center;
+	color: black;
+
 }
 
 /* PARTIE MODALES */
@@ -473,9 +482,9 @@ h3 {
 	align-items: center;
 	justify-content: center;
 	max-width: 100%;
-	width: 70%;
+	width: 68%;
 	height: 169px;
-	margin: 0px 80px 0px 80px;
+	margin: 30px 80px 30px 100px;
 	background-color: #E8F1F6;
 	border-radius: 2%;
 }
@@ -510,17 +519,24 @@ h3 {
 
 
 #titleModalPic {
-	width: 68%;
+	width: 67%;
 	height: 51px;
 	border-color: transparent;
 	box-shadow: 0px 4px 14px 0px #00000017;
+	margin: 10px 0px 10px 100px;
 }
 
 #categoryModalPic {
 	width: 68%;
-	height: 51px;
+	height: 60px;
 	border-color: transparent;
 	box-shadow: 0px 4px 14px 0px #00000017;
+	margin: 10px 0px 10px 100px;
+
+}
+
+.labelTitleModal {
+	margin: 10px 0px 10px 100px;
 }
 
 #valider {
@@ -538,6 +554,8 @@ h3 {
     margin-top: 30px;
 	cursor: pointer;
 }
+
+
 /* 
 Prévisualisation de l'image */ 
 .preview-picture img {

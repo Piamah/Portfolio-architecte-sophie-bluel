@@ -54,33 +54,27 @@ const openModal2 = function (e) {
     target2.removeAttribute("aria-hidden")
     target2.setAttribute("aria-modal", "true")
     modal = target2
+    // Clic en dehors des modales pour les fermer
     modal.addEventListener("click", closeModal)
     modal.querySelector(".close-btn").addEventListener("click", closeModal)
     modal.querySelector(".js-modal-stop").addEventListener("click", stopPropagation)
 }
 
-
-const stopPropagation2 = function (e) {
-    e.stopPropagation2()
-}
-
 document.querySelectorAll(".js-modal").forEach(a => {
     a.addEventListener("click", openModal)
-
 })
 
+//Fonctions pour cacher les modales
 const ajoutImage = document.querySelector(".add-photo")
     ajoutImage.addEventListener("click", openModal2)
 
-
-
-// Clic en dehors des modales pour les fermer
 const allModals = document.querySelector(".modal")
 const modal2 = document.querySelector("#modal2")
 
+
 function hideModal() {
     allModals.style.display = "none"
-    }
+}
 
 function hideModal2 () {
     modal2.style.display = "none"
@@ -92,6 +86,7 @@ const modalPhoto = document.querySelector("#add-photo-modal")
 const addPhotoBtn = document.querySelector("#add-photo-btn")
 const backBtn = document.querySelector("#back-first-modal")
 const closeBtn = document.querySelector("#close-btn")
+const closeBtn1 = document.querySelector("#close-btn1")
 
 // Gestion de l'affichage de la modale 
 addPhotoBtn.addEventListener("click", function() {
@@ -104,12 +99,19 @@ backBtn.addEventListener("click", function(){
   modalPhoto.style.display = "none"
 })
 
-closeBtn.addEventListener("click", hideModal)
+closeBtn.addEventListener("click", closeModalBtn)
+closeBtn1.addEventListener("click", closeModalBtn)
 backBtn.addEventListener("click", hideModal2)
 
+function closeModalBtn () {
+    allModals.style.display ="none"
+    modal1Content.style.display = "none"
+    modalPhoto.style.display = "none"
+    document.getElementById("modal1").setAttribute("aria-hidden", "true")
+    document.getElementById("modal2").setAttribute("aria-hidden", "true")
+}
 
 // Affichage des projets et des poubelles
-
 const worksModal = (works) => {
     const imagesModal = document.querySelector(".modalContent")
     imagesModal.innerHTML = ""
@@ -139,8 +141,7 @@ const worksModal = (works) => {
 getWorks() 
 .then(works => {
     worksModal(works)
-}
-)
+})
 
 //Fonction de suppression du travail en fonction de son ID
 function deleteWorkId(workId, figureElement) {
@@ -218,8 +219,7 @@ document.getElementById("add-photo2").addEventListener("change", function(e) {
             txt.style.display ="none"
         }
         reader.readAsDataURL(file)
-        }
-        
+    }    
 })
 
 //Reset du formulaire
@@ -235,10 +235,10 @@ function resetForm () {
     const label = document.getElementById("labelImageM2")
     const txt = document.querySelector(".addPicZone p")
 
-    icon.style.display ="block"
-    label.style.display ="block"
+    icon.style.display ="flex"
+    label.style.display ="flex"
     txt.style.display ="flex"
-
+    
     const submitBtnM2 = document.getElementById("valider")
     submitBtnM2.style.backgroundColor =""
 }
@@ -247,13 +247,15 @@ document.getElementById("close-btn").addEventListener("click", resetForm)
 document.getElementById("back-first-modal").addEventListener("click", resetForm)
 document.getElementById("close-btn1").addEventListener("click", resetForm)
 
-//Appeler filledForm chaque fois qu'un champ est rempli dans formulaire
+//Appeler filledForm chaque fois qu'un champ est rempli dans formulaire &
+//récupération des valeurs du formulaire
 const filledForm = function () {
     const title = document.getElementById ("titleModalPic").value
     const category = document.getElementById ("categoryModalPic").value
     const file = document.getElementById ("add-photo2").files[0]
     const submitBtnM2 = document.getElementById ("valider")
 
+    //Vérification des champs
     if (title !== "" && category !== "" && file) {
         submitBtnM2.style.backgroundColor = "#1D6154"
     }else {
@@ -266,11 +268,11 @@ document.getElementById("titleModalPic").addEventListener("input", filledForm)
 document.getElementById("categoryModalPic").addEventListener("change", filledForm)
 document.getElementById("add-photo2").addEventListener("change", filledForm)
 
-//Ajout de la nouvelle photo
+//Ajout de la nouvelle photo et écouteur du bouton valider
 document.getElementById("valider").addEventListener("click", function(e) {
     e.preventDefault()
 
-    const token = sessionStorage.getItem("token")
+    const token = localStorage.getItem("token")
     const title = document.getElementById("titleModalPic").value
     const category = document.getElementById("categoryModalPic").value
     const file = document.getElementById("add-photo2").files[0]
@@ -283,6 +285,40 @@ document.getElementById("valider").addEventListener("click", function(e) {
     if (file.size > 4 * 1024 * 1024) {
         alert("La taille de l'image ne doit pas dépasser 4Mo.")
         return
-      }
+    }
+
+//Ajout de la nouvelle photo dans la liste des works
+//Créer un nouveau work
+const formData = new FormData ()
+formData.append("title", title)
+formData.append("category", category)
+formData.append("image", file)
+
+// l'envoyer au serveur
+fetch("http://localhost:5678/api/works", {
+    method: "POST",
+    headers: {
+        Authorization: `Bearer ${token}`
+    },
+    body: formData
+})
+.then ((res) => {
+    if (res.ok) {
+        return res.json()
+    } else {
+        alert("Erreur lors de l'ajout du projet")
+    }
+})
+//Mettre à jour les données et l'affichage des works
+.then ((newWork) => {
+    getWorks()
+    .then (works => {
+        afficheWorksHome(works)
+        worksModal(works)
+    })
 })
 
+resetForm()
+closeModalBtn()
+
+})

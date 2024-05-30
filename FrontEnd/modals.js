@@ -323,9 +323,7 @@ fetch("http://localhost:5678/api/works", {
         afficheWorksHome(works)
         worksModal(works)
     })
-})
-
-resetForm()
-closeModalBtn()
-
+        resetForm()
+        closeModalBtn()
+    })
 })

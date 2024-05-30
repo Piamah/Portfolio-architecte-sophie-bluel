@@ -109,6 +109,8 @@ function closeModalBtn () {
     modalPhoto.style.display = "none"
     document.getElementById("modal1").setAttribute("aria-hidden", "true")
     document.getElementById("modal2").setAttribute("aria-hidden", "true")
+    document.getElementById("modal2").removeAttribute("aria-modal")
+    document.getElementById("modal2").style.display = "none"
 }
 
 // Affichage des projets et des poubelles
@@ -209,9 +211,11 @@ document.getElementById("add-photo2").addEventListener("change", function(e) {
             const icon = document.getElementById("imageMod2")
             const label = document.getElementById("labelImageM2")
             const txt = document.querySelector(".addPicZone p")
+            const previewPhotoLabel = document.querySelector(".preview-picture")
 
             preview.src = e.target.result
             preview.style.display = "block"
+            previewPhotoLabel.style.display = "block"
 
             // Cacher les éléments quand prévisualisation
             icon.style.display ="none"
@@ -229,6 +233,9 @@ function resetForm () {
     const preview = document.getElementById("preview")
     preview.src=""
     preview.style.display ="none"
+
+    const previewPhotoLabel = document.querySelector(".preview-picture")
+    previewPhotoLabel.style.display = "none"
 
     //Réaffichage des éléments lorsque réinitialisation
     const icon = document.getElementById("imageMod2")

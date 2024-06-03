@@ -333,7 +333,7 @@ nav img {
 .js-modal {
 	text-decoration: none;
 	padding: 10px;
-	font-family: Work Sans;
+	font-family: 'Work Sans';
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 16.42px;
@@ -363,8 +363,6 @@ nav img {
 	overflow: auto;
 	width: 630px;
 	height: 670px;
-	max-width: calc(100vw -20px);
-	max-height: calc(100vh -20px);
 	padding: 20px;
 	background-color: white;
 	border-radius: 2%;
@@ -509,7 +507,7 @@ h3 {
 
 
 .addPicZone p {
-	font-family: Work Sans;
+	font-family: 'Work Sans';
 	font-size: 10px;
 	font-weight: 400;
 	line-height: 11.73px;

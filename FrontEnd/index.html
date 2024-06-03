@@ -46,7 +46,7 @@
     </section>
     <!-- PARTIE MES PROJETS -->
     <section id="portfolio">
-        <div class = modifProjet>
+        <div class = "modifProjet">
             <h2>Mes projets</h2>
             <i class="fa-regular fa-pen-to-square"><a href ="#modal1" class="js-modal">modifier</a></i>
         </div>
@@ -81,7 +81,7 @@
 <!--PARTIE MODALE-->
 <section class="modals">
     <!-- MODALE 1 -->
-    <aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
+    <div id="modal1" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
         <div class="modal-wrapper js-modal-stop">
             <!-- modal-wrapper = littéralement fenêtre de modale -->
             <div class="modal-header">
@@ -92,9 +92,9 @@
             </div>
             <button class="add-photo" id = "add-photo-btn" data-target ="#modal2">Ajouter une photo</button>
         </div>
-    </aside>
+    </div>
     <!-- MODALE 2 -->
-    <aside id="modal2" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
+    <div id="modal2" class="modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display:none;">
         <div class ="modal-wrapper js-modal-stop" id="add-photo-modal">
             <div class="btnModal2">
                 <button class="js-modal-close" id="back-first-modal"><i class="fa-solid fa-arrow-left"></i></button>
@@ -106,28 +106,27 @@
                     <div class="addPicZone">
                         <i class="fa-regular fa-image grey" id="imageMod2"></i>
                         <label for = "add-photo2" id="labelImageM2">+ Ajouter photo</label>
-                        <input class="add-photo2" id="add-photo2" type="file" style="display: none"></input>
+                        <input class="add-photo2" id="add-photo2" type="file" style="display: none">
                         <p>jpg, png : 4mo max</p>
                         <div class = "preview-picture">
-                            <img id ="preview" src="" alt="Prévisualisation de l'image" style ="display :none">
+                            <img id ="preview" src="./assets/images/sophie-bluel.png" alt="Prévisualisation de l'image" style ="display :none">
                         </div>
                     </div>
                         <div class="infoTitlePicModale">
-                            <label for="title" class="labelTitleModal">Titre</label><br>
+                            <label for="titleModalPic" class="labelTitleModal">Titre</label><br>
                             <input type="text" name="title" id="titleModalPic">
                         </div>
                         <div class="infoCategoryPicModale">
-                            <label for="category" class="labelTitleModal">Catégorie</label><br>
+                            <label for="categoryModalPic" class="labelTitleModal">Catégorie</label><br>
                             <select name="category" id="categoryModalPic">
-                                <option value="" selected></option>
+                                <option value="" label =" " selected></option>
                             </select>
                     </div>
                 </form>
             </div>
             <input type="submit" id="valider" value="Valider">
         </div>
-
-    </aside>
+    </div>
 </section>
 <script src ="index.js"></script>
 <script src = "modals.js"></script>

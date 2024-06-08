@@ -264,6 +264,16 @@ footer {
 
 }
 
+.filtres button.active {
+	background-color: #1D6154;
+	color: white;
+}
+
+.filtres button.inactive {
+	background: none;
+	color: #1D6154;
+}
+
 /* HEADER */
 
 header a {

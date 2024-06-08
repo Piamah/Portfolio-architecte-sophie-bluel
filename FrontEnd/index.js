@@ -52,16 +52,30 @@ const filters = document.querySelector(".filtres")
 const boutonTous = document.createElement("button")
  // On lui met le texte "Tous"
 boutonTous.innerText = "Tous"
-// On met un addEventListener sur le clic de ce bouton "Tous"
+boutonTous.classList.add("active")
 
-boutonTous.addEventListener("click", function() {
-    // On appelle la fonction getWorks()
-    getWorks()
-    // Dans le .then , on appelle la fonction afficheWorksHome en passant en paramètre les works obtenus
-    .then (works => {
-        afficheWorksHome(works)
+function setActiveButton(button) {
+
+    document.querySelectorAll(".filtres button").forEach(btn => {
+        btn.classList.remove("active")
+        btn.classList.add("inactive")
     })
-});
+    button.classList.add("active")
+    button.classList.remove("inactive")
+}
+
+// On met un addEventListener sur le clic de ce bouton "Tous"
+boutonTous.addEventListener("click", function() {
+    if (!boutonTous.classList.contains ("active")) {
+        setActiveButton(boutonTous)
+        // On appelle la fonction getWorks()
+        getWorks()
+        // Dans le .then , on appelle la fonction afficheWorksHome en passant en paramètre les works obtenus
+        .then (works => {
+            afficheWorksHome(works)
+        })
+    }
+})
 
  // On l'insère dans filters
 filters.appendChild(boutonTous)
@@ -86,17 +100,15 @@ getCategories()
     // Pour chaque catégorie trouvée, on crée un bouton
     categories.forEach(categorie => {
         const bouton = document.createElement("button")
-        // On lui met comme texte le nom de la catégorie
-        bouton.textContent = categorie.name
+            bouton.textContent = categorie.name
+            bouton.classList.add("inactive")
 
-        filters.appendChild(bouton)
-        // On met un addEventListener sur le clic de ce bouton
-        bouton.addEventListener("click", function(){
-            // On appelle la fonction getWorksFiltered en passant en paramètre le nom de la catégorie
-            getWorksFiltered(categorie.id)
-            // Dans le .then , on appelle la fonction afficheWorksHome en passant en paramètre les works obtenus
-            .then(works => {
-                afficheWorksHome(works)
+            filters.appendChild(bouton)
+            bouton.addEventListener("click", function() {
+                setActiveButton(bouton)
+                getWorksFiltered(categorie.id)
+                    .then(works => {
+                        afficheWorksHome(works)
             })
         })
       })
